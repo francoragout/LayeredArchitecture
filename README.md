@@ -35,3 +35,9 @@ graph LR
     Tests --> Infrastructure
     Tests --> Domain
 ```
+
+## Base de datos: Northwind
+Northwind es una base de datos de muestra que contiene datos ficticios para una tienda de productos alimenticios.
+- Relación entre tablas:
+  - `Products` tiene una relación de muchos a uno con `Categories` y `Suppliers`.
+  - `OrderDetails` tiene una relación de muchos a uno con `Orders` y `Products`.
