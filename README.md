@@ -34,6 +34,40 @@ Archivos clave:
 - `Infrastructure/Repositories/*.cs` — consultas SQL con Dapper.
 - `Application/Services/*` — mapeo entre entidades y DTOs, reglas de negocio (ej.: `CategoryService` evita duplicados por nombre).
 
+## Diagrama de referencias entre proyectos
+
+El siguiente diagrama muestra las referencias entre los proyectos de la solución. Las flechas indican "A -> B" significa "A referencia a B".
+
+```mermaid
+graph LR
+    Domain[Domain]
+    Application[Application] --> Domain
+    Infrastructure[Infrastructure] --> Application
+    Infrastructure --> Domain
+    API[API] --> Application
+    API --> Infrastructure
+    Tests[Tests] --> Application
+    Tests --> Infrastructure
+    Tests --> Domain
+```
+
+## Explicación capa por capa
+
+- API
+  Capa de presentación y entrada al sistema. Contiene controladores (p. ej. `ProductsController`), `Program.cs`, middleware y contratos HTTP. Se encarga de recibir solicitudes y delegar la lógica a la capa `Application`.
+
+- Application
+  Capa de orquestación y reglas de aplicación. Agrupa servicios (p. ej. `ProductService`), DTOs e interfaces de repositorio (`IProductRepository`). Implementa casos de uso, validaciones y mapeos; no conoce detalles de persistencia.
+
+- Domain
+  Modelo del dominio: entidades (`Product`, `Category`, `Order`, etc.) e invariantes del negocio. Aquí reside la lógica que pertenece al modelo en sí y que no depende de infraestructuras externas.
+
+- Infrastructure
+  Implementaciones técnicas y acceso a recursos externos. Contiene `DapperContext`, repositorios que implementan las interfaces definidas en `Application` (p. ej. `ProductRepository`) y la lógica de persistencia, conexiones y transacciones.
+
+- Tests
+  Conjunto de pruebas unitarias e integración. Las pruebas unitarias focan en servicios y reglas de negocio (mockeando repositorios), mientras que las pruebas de integración validan el comportamiento real contra la base de datos y las implementaciones de `Infrastructure`.
+
 ## Tecnologías
 
 - .NET 8
