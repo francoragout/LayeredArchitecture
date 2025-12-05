@@ -1,4 +1,4 @@
-name: .NET
+name: .NET CI
 
 on:
   push:
@@ -18,43 +18,11 @@ jobs:
       with:
         dotnet-version: "8.0.x"
 
-    - name: Restore dependencies
+    - name: Restore
       run: dotnet restore
 
-    - name: Build solution
-      run: dotnet build --configuration Release --no-restore
+    - name: Build
+      run: dotnet build --configuration Release
 
-    # =============================================
-    # RUN TESTS + FORCE COVERAGE OUTPUT LOCATION
-    # =============================================
-    - name: Run tests with TRX and coverage
-      run: dotnet test --configuration Release --logger "trx;LogFileName=test_results.trx" /p:CollectCoverage=true /p:CoverletOutput=./TestResults/coverage.xml /p:CoverletOutputFormat=opencover
-
-    # Upload TRX test results
-    - name: Upload test results
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results
-        path: "**/test_results.trx"
-
-    # Upload XML coverage report
-    - name: Upload coverage report
-      uses: actions/upload-artifact@v4
-      with:
-        name: coverage
-        path: "**/TestResults/coverage.xml"
-
-    # =============================================
-    # REPORT GENERATOR (HTML REPORT)
-    # =============================================
-    - name: Install ReportGenerator
-      run: dotnet tool install --tool-path .reportgenerator dotnet-reportgenerator-globaltool
-
-    - name: Generate HTML coverage report
-      run: ./.reportgenerator/reportgenerator -reports:**/TestResults/coverage.xml -targetdir:coveragereport
-
-    - name: Upload HTML coverage report
-      uses: actions/upload-artifact@v4
-      with:
-        name: html-coverage
-        path: coveragereport
+    - name: Test
+      run: dotnet test --configuration Release
