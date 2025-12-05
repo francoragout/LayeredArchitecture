@@ -1,4 +1,13 @@
-# LayeredArchitecture
+# Arquitectura en Capas
+
+<!-- Badges / Iconos -->
+
+<img src="https://img.shields.io/badge/.NET-8-512BD4?logo=dotnet&logoColor=white" alt=".NET 8" />
+<img src="https://img.shields.io/badge/ASP.NET_Core-API-6DB33F?logo=asp.net&logoColor=white" alt="ASP.NET Core" />
+<img src="https://img.shields.io/badge/Dapper-Dapper-1F8ACB?logo=datawire&logoColor=white" alt="Dapper" />
+<img src="https://img.shields.io/badge/SQL_Server-SQLServer-CC2927?logo=microsoft-sql-server&logoColor=white" alt="SQL Server" />
+<img src="https://img.shields.io/badge/Tests-xUnit-FF4088?logo=xunit&logoColor=white" alt="xUnit" />
+
 
 API REST en .NET 8 con arquitectura en capas: `API`, `Application`, `Domain` e `Infrastructure`. Implementa operaciones CRUD para Productos, Categorías, Proveedores y Pedidos, usando Dapper para acceso a SQL Server y pruebas (unitarias e integración).
 
@@ -68,4 +77,3 @@ dotnet run --project API
 
 ```bash
 dotnet test
-```
