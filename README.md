@@ -23,8 +23,6 @@ API REST en .NET 8 con arquitectura en capas: `API`, `Application`, `Domain` e `
 
 ## Diagrama de referencias entre proyectos
 
-El siguiente diagrama muestra las referencias entre los proyectos de la solución. Las flechas indican "A -> B" significa "A referencia a B".
-
 ```mermaid
 graph LR
     Domain[Domain]
