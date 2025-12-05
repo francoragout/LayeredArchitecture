@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Xunit;
 
-namespace Tests
+namespace Tests.Unit.Controllers
 {
     public class OrderControllerTests
     {

@@ -9,7 +9,7 @@ using Domain.Entities;
 using Moq;
 using Xunit;
 
-namespace Tests
+namespace Tests.Unit.Services
 {
     public class CategoryServiceTests
     {
