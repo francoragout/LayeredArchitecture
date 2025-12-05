@@ -7,6 +7,7 @@
 <img src="https://img.shields.io/badge/Dapper-Dapper-1F8ACB?logo=datawire&logoColor=white" alt="Dapper" />
 <img src="https://img.shields.io/badge/SQL_Server-SQLServer-CC2927?logo=microsoft-sql-server&logoColor=white" alt="SQL Server" />
 <img src="https://img.shields.io/badge/Tests-xUnit-FF4088?logo=xunit&logoColor=white" alt="xUnit" />
+<img src="https://img.shields.io/badge/Authentication-JWT-0A66C2?logo=json-web-tokens&logoColor=white" alt="JWT Authentication" />
 
 
 API REST en .NET 8 con arquitectura en capas: `API`, `Application`, `Domain` e `Infrastructure`. Implementa operaciones CRUD para Productos, Categorías, Proveedores y Pedidos, usando Dapper para acceso a SQL Server y pruebas (unitarias e integración).

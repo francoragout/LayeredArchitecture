@@ -1,11 +1,13 @@
 ﻿using Application.Dtos.Supplier;
 using Application.Services.Supplier;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class SupplierController : ControllerBase
     {
         private readonly ISupplierService _service;
