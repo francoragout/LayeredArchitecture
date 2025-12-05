@@ -28,13 +28,9 @@ jobs:
     # RUN TESTS + FORCE COVERAGE OUTPUT LOCATION
     # =============================================
     - name: Run tests with TRX and coverage
-      run: dotnet test --configuration Release \
-            --logger "trx;LogFileName=test_results.trx" \
-            /p:CollectCoverage=true \
-            /p:CoverletOutput=./TestResults/coverage.xml \
-            /p:CoverletOutputFormat=opencover
+      run: dotnet test --configuration Release --logger "trx;LogFileName=test_results.trx" /p:CollectCoverage=true /p:CoverletOutput=./TestResults/coverage.xml /p:CoverletOutputFormat=opencover
 
-    # Upload trx test results
+    # Upload TRX test results
     - name: Upload test results
       uses: actions/upload-artifact@v4
       with:
@@ -55,9 +51,7 @@ jobs:
       run: dotnet tool install --tool-path .reportgenerator dotnet-reportgenerator-globaltool
 
     - name: Generate HTML coverage report
-      run: ./.reportgenerator/reportgenerator \
-           -reports:**/TestResults/coverage.xml \
-           -targetdir:coveragereport
+      run: ./.reportgenerator/reportgenerator -reports:**/TestResults/coverage.xml -targetdir:coveragereport
 
     - name: Upload HTML coverage report
       uses: actions/upload-artifact@v4
